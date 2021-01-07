@@ -1,6 +1,9 @@
 const { parse } = require("./parser");
 
 describe("parser", () => {
+  it("should not crash", () => {
+    expect(parse()).toEqual({});
+  });
   it("should return object if no arguments", () => {
     expect(parse("", "", {})).toEqual({});
   });

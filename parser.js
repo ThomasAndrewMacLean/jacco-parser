@@ -1,10 +1,8 @@
-const parse = (dottedKey, value, object) => {
-  if (!object) object = {};
-  if (!dottedKey || !value) return object;
-
-  const array = dottedKey.split(".");
-  dottedKey.split(".").reduce((accu, v, index) => {
-    return index + 1 === array.length ? (accu[v] = value) : (accu[v] = {});
+const parse = (dottedKey = "", value = "", object = {}) => {
+  dottedKey.split(".").reduce((acc, v, index) => {
+    return index + 1 === dottedKey.split(".").length
+      ? v && (acc[v] = value)
+      : (acc[v] = {});
   }, object);
 
   return object;
